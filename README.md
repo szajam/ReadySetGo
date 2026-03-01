@@ -175,3 +175,14 @@ TBD
 **In Jira**
 
 ---
+
+## MVP
+
+**Minimalna wersja systemu obejmuje:**
+- Konto użytkownika
+- Rezerwację zajęć
+- Połączenie z bazą danych
+- Podstawowy panel admina
+
+
+---
