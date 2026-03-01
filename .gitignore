@@ -1,0 +1,50 @@
+# ─── Android ─────────────────────────────────────────────────────────────────
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# ─── Keystore / Signing ───────────────────────────────────────────────────────
+*.jks
+*.keystore
+keystore.properties
+release/
+
+# ─── Gradle ───────────────────────────────────────────────────────────────────
+gradle-wrapper.jar
+.gradle/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+!**/src/androidTest/**/build/
+
+# ─── Kotlin ───────────────────────────────────────────────────────────────────
+*.class
+*.kotlin_module
+
+# ─── Node  ────────────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ─── Android Studio ───────────────────────────────────────────────────────────
+*.orig
+profiling/
+*.hprof```
