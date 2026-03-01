@@ -12,6 +12,38 @@ Aplikacja - System Rezerwacji Usług Sportowych
 
 ---
 
+## Klasy dla branchy
+
+**Sposób tworzenia brancha:**
+
+`prefix`:`{Opis problemu}`
+
+| Prefix       | Opis                                                                       |
+|--------------|----------------------------------------------------------------------------|
+| **feat**     | Nowa funkcjonalność (np. dodanie rezerwacji).                              |
+| **fix**      | Naprawa błędu.                                                             |
+| **docs**     | Zmiany w dokumentacji (readme, javadoc).                                   |
+| **style**    | Zmiany formatowania, brakujące średniki, itd. (nie wpływa na logikę kodu). |
+| **refactor** | Zmiana kodu, która ani nie naprawia błędu, ani nie dodaje funkcji.                                                                          |
+| **chore**    | Zmiany w procesie budowania, narzędziach pomocniczych.                       |
+
+
+---
+
+## Styl dla PR'ów
+
+| Typ        | Issue          | Podsumowanie  |
+|------------|----------------|---------------|
+| **Prefix** | *Issue z Jiry* | *Krótki opis* |
+
+**Przykład:**
+
+| Typ      | Issue    | Podsumowanie                             |
+|----------|----------|------------------------------------------|
+| **Docs** | (EX.123) | Zmiana dokumentacji, dodano nowy wygląd. |
+
+---
+
 ## System rezerwacji usług sportowo rekreacyjnych
 
 | Funkcjonalności           | Opis                                                 |
@@ -26,7 +58,7 @@ Aplikacja - System Rezerwacji Usług Sportowych
 
 ## Architektura
 
-Clean **MVVM** architecture with Repository pattern:
+Struktura docelowa typu *MVVM* dla plików projektu:
 
 ```
 ReadySetGo/
@@ -97,7 +129,7 @@ Layers TBD
 
 ---
 
-## Setup Guide
+## Używanie aplikacji
 
 ### Wymagania
 
