@@ -29,7 +29,7 @@ Małe studia fitness i trenerzy tracą czas na ręczne odpisywanie na wiadomośc
 
 **_Administrator/Trener:_** Profesjonalista potrzebujący czystego wglądu w grafik i 		automatyzacji powiadomień.
 
-**_Wartość biznesowa:_**
+### **Wartość biznesowa:**
 
 * Automatyzacja zapisów
 * Oszczędność czasu
