@@ -12,11 +12,41 @@ Aplikacja - System Rezerwacji Usług Sportowych
 
 ---
 
+## Wizja Projektu
+
+### **Problem:**
+
+Małe studia fitness i trenerzy tracą czas na ręczne odpisywanie na wiadomości i telefony w sprawie zapisów. Klienci rezygnują z usług, gdy nie mogą sprawdzić dostępności terminu "tu i teraz" (np. późno wieczorem), co powoduje:
+
+* brak kontroli nad liczbą miejsc,
+* błędy w zapisach,
+* trudności w zarządzaniu grafikiem,
+* brak historii rezerwacji
+
+### **Użytkownik:**
+
+**_Klient:_** 	Osoba aktywna, ceniąca czas, chcąca zarezerwować trening w 3 kliknięcia.
+
+**_Administrator/Trener:_** Profesjonalista potrzebujący czystego wglądu w grafik i 		automatyzacji powiadomień.
+
+**_Wartość biznesowa:_**
+
+* Automatyzacja zapisów
+* Oszczędność czasu
+* Lepsza organizacja pracy
+* Możliwość dalszej rozbudowy (np. płatności online)
+
+### **Diagram przykładu użycia:**
+
+![Diagram przykładu użycia](d1.png)
+
+---
+
 ## Klasy dla branchy
 
 **Sposób tworzenia brancha:**
 
-`prefix`:`{Opis problemu}`
+`prefix`/`{Opis problemu}`
 
 | Prefix       | Opis                                                                       |
 |--------------|----------------------------------------------------------------------------|
@@ -146,10 +176,10 @@ cd ReadySetGo
 
 ### 2. Wystartuj aplikacje
 
-1. Open in Android Studio: **File → Open** → select `ReadySetGo/`
-2. Wait for Gradle sync
-3. Connect a device or start an emulator (API 26+)
-4. Click **Run ▶️** or press `Shift+F10`
+1. Otwórz w Android Studio: **File → Open** → select `ReadySetGo/`
+2. Poczekaj na Gradle sync
+3. Połącz się do urządzenia lub wystartuj emulator (API 26+)
+4. Kliknij **Run ▶️** lub naciśnij `Shift+F10`
 
 ---
 
@@ -163,16 +193,16 @@ TBD
 
 ## Design System
 
-| Token | Color | Usage |
-|-------|-------|-------|
-| *TBD* | *TBD* | *TBD* |
+| Token | Kolor | Zastosowanie |
+|-------|-------|--------------|
+| *TBD* | *TBD* | *TBD*        |
 
 
 ---
 
 ## Roadmap
 
-**In Jira**
+**W Jira**
 
 ---
 
