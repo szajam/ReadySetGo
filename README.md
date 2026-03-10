@@ -18,6 +18,7 @@ Aplikacja - System Rezerwacji Usług Sportowych
 
 Małe studia fitness i trenerzy tracą czas na ręczne odpisywanie na wiadomości i telefony w sprawie zapisów. Klienci rezygnują z usług, gdy nie mogą sprawdzić dostępności terminu "tu i teraz" (np. późno wieczorem), co powoduje:
 
+* próba 
 * brak kontroli nad liczbą miejsc,
 * błędy w zapisach,
 * trudności w zarządzaniu grafikiem,
