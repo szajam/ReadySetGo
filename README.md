@@ -224,7 +224,13 @@ copy .env.example .env
 ### 3. Wystartuj baze danych
 ```powershell
 cd backend/docker
-docker compose up -d
+.\start-db.ps1
+```
+
+#### Dla zatrzymania bazy danych odpowiednio:
+```powershell
+cd backend/docker
+.\stop-db.ps1
 ```
 
 ### 4. Wystartuj backend
@@ -263,6 +269,19 @@ W `.env.example` zawarte są wszystkie wymagane zmienne środowiskowe.
 | DB_USER     | db_user          | Użytkownik bazy danych |
 | DB_PASSWORD | db_password      | Hasło bazy danych      |
 | KTOR_PORT   | 8080             | Backend server port    |
+
+---
+
+## Docker
+
+Baza danych jest zarządzana poprzez Docker Compose. 
+Używaj podanych skryptów zamiast surowych komend `docker compose`.
+One automatycznie ustawiają ścieżkę do pliku `.env`.
+
+| Skrypt                        | Działanie                      |
+|-------------------------------|--------------------------------|
+| `backend/docker/start-db.ps1` | Wystartuj kontener PostgreSQL  |
+| `backend/docker/stop-db.ps1`  | Zatrzymaj kontener PostgreSQL  |
 
 ---
 

@@ -13,25 +13,22 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.module() {
 
-    // ── Load .env ───────────────────────────────────────────────
+    // ── Load .env from root ReadySetGo/ folder ──────────────────
     val dotenv = dotenv {
         directory = "../"
-        ignoreIfMissing = true
+        ignoreIfMissing = false
     }
 
-    // ── Plugins ─────────────────────────────────────────────────
+    // ── Plugins ──────────────────────────────────────────────────
     install(ContentNegotiation) {
         json()
     }
 
     // ── Database ─────────────────────────────────────────────────
     val dataSource = HikariDataSource(HikariConfig().apply {
-        jdbcUrl = "jdbc:postgresql://" +
-                "${dotenv["DB_HOST", "localhost"]}:" +
-                "${dotenv["DB_PORT", "5432"]}/" +
-                dotenv["DB_NAME", "readysetgo"]
-        username        = dotenv["DB_USER", "rsguser"]
-        password        = dotenv["DB_PASSWORD", "rsgpassword"]
+        jdbcUrl         = "jdbc:postgresql://${dotenv["DB_HOST"]}:${dotenv["DB_PORT"]}/${dotenv["DB_NAME"]}"
+        username        = dotenv["DB_USER"]
+        password        = dotenv["DB_PASSWORD"]
         driverClassName = "org.postgresql.Driver"
         maximumPoolSize = 5
     })
