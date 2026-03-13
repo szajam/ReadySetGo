@@ -76,7 +76,6 @@ Małe studia fitness i trenerzy tracą czas na ręczne odpisywanie na wiadomośc
 - Połączenie z bazą danych
 - Podstawowy panel admina
 
-
 ---
 
 ## Klasy dla branchy
@@ -113,16 +112,29 @@ Małe studia fitness i trenerzy tracą czas na ręczne odpisywanie na wiadomośc
 
 ## Architektura
 
-Struktura docelowa typu *MVVM* dla plików projektu:
+#### Architektura w skrócie
+
+```
+Android App (frontend)
+       ↕ HTTP/REST
+Ktor Server (backend)
+       ↕ JDBC + HikariCP
+PostgreSQL (database)
+```
+
+#### Struktura docelowa typu *MVVM* dla plików projektu:
 
 ```
 ReadySetGo/
 ├── backend/          # Ktor REST API + JDBC + PostgreSQL
 │   ├── docker/       # Docker Compose + database setup
+│   │   ├── docker-compose.yml  # PostgreSQL 16 container
+│   │   ├── start-db.ps1        # Start database
+│   │   └── stop-db.ps1         # Stop database       
 │   ├── src/
 │   │   └── main/
 │   │       ├── kotlin/com/ReadySetGo/backend/
-│   │       │   ├── config/       # DB config, HikariCP pool
+│   │       │   ├── config/       # DB config, HikariCP connection pool
 │   │       │   ├── controller/   # REST endpoints
 │   │       │   ├── repository/   # JDBC queries
 │   │       │   ├── model/        # Domain models
@@ -138,9 +150,9 @@ ReadySetGo/
 │   │       ├── kotlin/com/ReadySetGo/frontend/
 │   │       │   ├── data/
 │   │       │   │   ├── remote/       # Retrofit API interfaces
-│   │       │   │   ├── repository/   # Repository pattern
+│   │       │   │   ├── repository/   # Repository pattern (bridge VM ↔ API)
 │   │       │   │   └── model/        # DTOs / UI models
-│   │       │   ├── ui/               # (Przykłady UI)
+│   │       │   ├── ui/           # (Przykłady UI)
 │   │       │   │   ├── home/         # HomeFragment + HomeViewModel
 │   │       │   │   └── detail/       # DetailFragment + DetailViewModel
 │   │       │   ├── di/               # Hilt modules
@@ -220,6 +232,7 @@ cd ReadySetGo
 ```powershell
 copy .env.example .env
 ```
+Wypełnij swoje wartości zmiennych w `.env`.
 
 ### 3. Wystartuj baze danych
 ```powershell
@@ -290,6 +303,9 @@ One automatycznie ustawiają ścieżkę do pliku `.env`.
 | Metoda | Endpoint  | Opis                     |
 |--------|-----------|--------------------------|
 | GET    | /health   | Server + database status |
+
+
+Więcej endpoint'ów się pojawi w ciagu projektu.
 
 ---
 
