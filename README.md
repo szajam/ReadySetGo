@@ -9,6 +9,12 @@ Aplikacja - System Rezerwacji Usług Sportowych
 
 ![Platform](https://img.shields.io/badge/platform-Android-green)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blue)
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9.22-7F52FF?style=flat&logo=kotlin&logoColor=white)
+![Ktor](https://img.shields.io/badge/Ktor-2.3.12-087CFA?style=flat&logo=ktor&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat&logo=docker&logoColor=white)
+![Android](https://img.shields.io/badge/Android-API_26+-3DDC84?style=flat&logo=android&logoColor=white)
+![Gradle](https://img.shields.io/badge/Gradle-9.1.0-02303A?style=flat&logo=gradle&logoColor=white)
 
 ---
 
@@ -43,6 +49,36 @@ Małe studia fitness i trenerzy tracą czas na ręczne odpisywanie na wiadomośc
 
 ---
 
+## System rezerwacji usług sportowo rekreacyjnych
+
+| Funkcjonalności           | Opis                                                 |
+|---------------------------|------------------------------------------------------|
+| **Autentykacja**          | Rejestracja i logowanie                              |
+| **Przegląd Zajęć**        | Przeglądaj dostępne zajęcia                          |
+| **Rezerwacja terminów**   | Rezerwój terminy zajęć                               |
+| **Anulowanie**            | Anuluj swoje rezerwacje                              |
+| **Panel administratora**  | Panel Administratora posiadający dostęp do strony    |
+
+---
+
+
+## Roadmap
+
+**W Jira**
+
+---
+
+## MVP
+
+**Minimalna wersja systemu obejmuje:**
+- Konto użytkownika
+- Rezerwację zajęć
+- Połączenie z bazą danych
+- Podstawowy panel admina
+
+
+---
+
 ## Klasy dla branchy
 
 **Sposób tworzenia brancha:**
@@ -63,27 +99,15 @@ Małe studia fitness i trenerzy tracą czas na ręczne odpisywanie na wiadomośc
 
 ## Styl dla PR'ów
 
-| Typ        | Issue          | Podsumowanie  |
-|------------|----------------|---------------|
-| **Prefix** | *Issue z Jiry* | *Krótki opis* |
+| Typ        | Issue          | Podsumowanie      |
+|------------|----------------|-------------------|
+| **Prefix** | *Issue z Jiry* | *Krótki opis*     |
 
 **Przykład:**
 
-| Typ      | Issue    | Podsumowanie                             |
-|----------|----------|------------------------------------------|
-| **Docs** | (EX.123) | Zmiana dokumentacji, dodano nowy wygląd. |
-
----
-
-## System rezerwacji usług sportowo rekreacyjnych
-
-| Funkcjonalności           | Opis                                                 |
-|---------------------------|------------------------------------------------------|
-| **Autentykacja**          | Rejestracja i logowanie                              |
-| **Przegląd Zajęć**        | Przeglądaj dostępne zajęcia                          |
-| **Rezerwacja terminów**   | Rezerwój terminy zajęć                               |
-| **Anulowanie**            | Anuluj swoje rezerwacje                              |
-| **Panel administratora**  | Panel Administratora posiadający dostęp do strony    |
+| Typ      | Issue     | Podsumowanie                             |
+|----------|-----------|------------------------------------------|
+| **Docs** | **RSG-6** | Zmiana dokumentacji, dodano nowy wygląd. |
 
 ---
 
@@ -93,94 +117,48 @@ Struktura docelowa typu *MVVM* dla plików projektu:
 
 ```
 ReadySetGo/
-├── backend/                          # Pure Java/Kotlin backend (REST API)
+├── backend/          # Ktor REST API + JDBC + PostgreSQL
+│   ├── docker/       # Docker Compose + database setup
 │   ├── src/
 │   │   └── main/
-│   │       ├── java/com/ReadySetGo/backend/
-│   │       │   ├── config/           # DB config, connection pool
-│   │       │   ├── controller/       # REST endpoints (Ktor / Spring Boot)
-│   │       │   ├── repository/       # JDBC queries live here
-│   │       │   ├── model/            # Data classes / entities
-│   │       │   └── service/          # Business logic
+│   │       ├── kotlin/com/ReadySetGo/backend/
+│   │       │   ├── config/       # DB config, HikariCP pool
+│   │       │   ├── controller/   # REST endpoints
+│   │       │   ├── repository/   # JDBC queries
+│   │       │   ├── model/        # Domain models
+│   │       │   └── service/      # Business logic
 │   │       └── resources/
-│   │           └── application.yml   # DB URL, credentials
-│   ├── docker/
-│   │   ├── docker-compose.yml        # Spins up Postgres/MySQL
-│   │   └── init.sql                  # Schema seed
+│   │           ├── application.conf
+│   │           └── logback.xml
 │   └── build.gradle.kts
 │
-├── frontend/                         # Android App (MVVM)
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/com/ReadySetGo/frontend/
+├── frontend/         # Android app (MVVM + Hilt + Retrofit)
+│   ├── app/
+│   │   └── src/main/
+│   │       ├── kotlin/com/ReadySetGo/frontend/
 │   │       │   ├── data/
-│   │       │   │   ├── remote/       # Retrofit API service interfaces
-│   │       │   │   ├── repository/   # Repository pattern (bridge VM ↔ API)
-│   │       │   │   └── model/        # DTOs / response models
-│   │       │   ├── ui/
-│   │       │   │   ├── home/
-│   │       │   │   │   ├── HomeFragment.kt      # View
-│   │       │   │   │   └── HomeViewModel.kt     # ViewModel
-│   │       │   │   ├── detail/
-│   │       │   │   │   ├── DetailFragment.kt
-│   │       │   │   │   └── DetailViewModel.kt
-│   │       │   │   └── MainActivity.kt
-│   │       │   ├── di/               # Dependency injection (Hilt modules)
+│   │       │   │   ├── remote/       # Retrofit API interfaces
+│   │       │   │   ├── repository/   # Repository pattern
+│   │       │   │   └── model/        # DTOs / UI models
+│   │       │   ├── ui/               # (Przykłady UI)
+│   │       │   │   ├── home/         # HomeFragment + HomeViewModel
+│   │       │   │   └── detail/       # DetailFragment + DetailViewModel
+│   │       │   ├── di/               # Hilt modules
 │   │       │   └── utils/            # Extensions, constants
-│   │       ├── res/
-│   │       │   ├── layout/           # XML layouts per screen
-│   │       │   ├── navigation/       # NavGraph XML
-│   │       │   └── values/
-│   │       └── AndroidManifest.xml
+│   │       └── res/
+│   │           ├── layout/
+│   │           ├── navigation/
+│   │           └── values/
 │   └── build.gradle.kts
 │
-├── shared/                           # Shared models between front & back
-│   └── src/main/kotlin/com/ReadySetGo/shared/
-│       └── dto/                      # Shared data transfer objects
+├── shared/           # Shared DTOs between backend and frontend
+│   └── src/main/kotlin/com/ReadySetGo/shared/dto/
 │
-├── settings.gradle.kts
-└── build.gradle.kts                  # Root build config
+├── .env.example      # Template dla zmiennych środowiskowych
+├── .gitignore
+├── d1.png            # Diagram przykładu użycia
+└── README.md
 ```
-
-```
-Layers TBD
-```
-
----
-
-## Technologie
-
-| Technologie    | Zastosowanie                 |
-|----------------|------------------------------|
-| **Kotlin**     | *TBD*                        |
-| **Java**       | *TBD*                        |
-| **PostgreSQL** | Baza danych dla projektu     |
-| **GitHub**     | Główne repozytorium porjektu |
-| **Jira**       | Organizacja pracy zespołu    |
-
----
-
-## Używanie aplikacji
-
-### Wymagania
-
-- Android Studio Hedgehog (2023.1.1) or later
-- JDK 21
-- A Firebase account (free Spark plan works)
-
-### 1. Sklonuj repozytorium
-
-```bash
-git clone https://github.com/szajam/ReadySetGo.git
-cd ReadySetGo
-```
-
-### 2. Wystartuj aplikacje
-
-1. Otwórz w Android Studio: **File → Open** → select `ReadySetGo/`
-2. Poczekaj na Gradle sync
-3. Połącz się do urządzenia lub wystartuj emulator (API 26+)
-4. Kliknij **Run ▶️** lub naciśnij `Shift+F10`
 
 ---
 
@@ -192,28 +170,115 @@ TBD
 
 ---
 
-## Design System
+## Tech Stack
+
+### Narzędzia
+| Narzędzie          | Zastosowanie                                   |
+|--------------------|------------------------------------------------|
+| **IntelliJ IDEA**  | Backend development                            |
+| **Android Studio** | Frontend development                           |
+| **Docker Desktop** | Startowanie bazy PostgreSQL lokalnie           |
+| **GitHub**         | Główne repozytorium projektu / kontrola wersji |
+| **Jira**           | Organizacja pracy zespołu                      |
+
+Otwórz oba IDEs obok siebie — IntelliJ dla `backend/`, Android Studio dla `frontend/`.
+
+### Technologie
+
+| Warstwa      | Technologia                         |
+|--------------|-------------------------------------|
+| Backend      | **Ktor 2.x (Netty)**                |
+| DB Bridge    | **JDBC** + **HikariCP**             |
+| Database     | **PostgreSQL 16 (Docker)**          |
+| Android UI   | **Fragments** + **ViewBinding**     |
+| Architecture | **MVVM** + **Repository pattern**   |
+| DI           | **Hilt**                            |
+| HTTP Client  | **Retrofit 2** + **OkHttp**         |
+| Async        | **Coroutines** + **StateFlow**      |
+| Repository   | **GitHub**                          |
+| Workflow     | **Jira**                            |
+
+---
+
+## Używanie aplikacji
+
+### Wymagania
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [Android Studio](https://developer.android.com/studio) — frontend
+- [IntelliJ IDEA Community](https://www.jetbrains.com/idea/) — backend
+- JDK 17+
+
+### 1. Sklonuj repozytorium
+
+```powershell
+git clone https://github.com/szajam/ReadySetGo.git
+cd ReadySetGo
+```
+
+### 2. Skopiuj zmienne środowiskowe
+```powershell
+copy .env.example .env
+```
+
+### 3. Wystartuj baze danych
+```powershell
+cd backend/docker
+docker compose up -d
+```
+
+### 4. Wystartuj backend
+```powershell
+cd backend
+.\gradlew.bat run
+```
+
+### 5. Sprawdź czy backend działa
+```powershell
+curl.exe http://localhost:8080/health
+# {"status":"ok","database":"connected"}
+```
+
+### 6. Wystartuj aplikacje Android
+1. Otwórz w Android Studio: **File → Open** → select `ReadySetGo/frontend`
+2. Poczekaj na Gradle sync
+3. Połącz się do urządzenia lub wystartuj emulator.
+4. Kliknij **Run ▶️** lub naciśnij `Shift+F10`
+   
+Aplikacja łączy się do `http://10.0.2.2:8080` co przekierowuje ją na lokalny backend.
+
+---
+
+## Zmienne środowiskowe .env
+
+W `.env.example` zawarte są wszystkie wymagane zmienne środowiskowe. 
+
+**Nigdy nie dodawaj do commit'a `.env`!**
+
+| Zmienna     | Domyślna wartość | Opis                   |
+|-------------|------------------|------------------------|
+| DB_HOST     | localhost        | PostgreSQL host        |
+| DB_PORT     | 5432             | PostgreSQL port        |
+| DB_NAME     | db_name          | Nazwa bazy danych      |
+| DB_USER     | db_user          | Użytkownik bazy danych |
+| DB_PASSWORD | db_password      | Hasło bazy danych      |
+| KTOR_PORT   | 8080             | Backend server port    |
+
+---
+
+## API
+
+| Metoda | Endpoint  | Opis                     |
+|--------|-----------|--------------------------|
+| GET    | /health   | Server + database status |
+
+---
+
+## Paleta kolorów
 
 | Token | Kolor | Zastosowanie |
 |-------|-------|--------------|
 | *TBD* | *TBD* | *TBD*        |
-
-
----
-
-## Roadmap
-
-**W Jira**
-
----
-
-## MVP
-
-**Minimalna wersja systemu obejmuje:**
-- Konto użytkownika
-- Rezerwację zajęć
-- Połączenie z bazą danych
-- Podstawowy panel admina
 
 
 ---
