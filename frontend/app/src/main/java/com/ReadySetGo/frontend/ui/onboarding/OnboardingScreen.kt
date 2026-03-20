@@ -1,4 +1,4 @@
-package com.ReadySetGo.frontend.ui.auth.onboarding // POPRAW PAKIET NA WŁAŚCIWY
+package com.ReadySetGo.frontend.ui.auth.onboarding 
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
