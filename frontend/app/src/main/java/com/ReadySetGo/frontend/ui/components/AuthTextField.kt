@@ -1,4 +1,4 @@
-package com.ReadySetGo.frontend.ui.components // POPRAW PAKIET NA WŁAŚCIWY
+package com.ReadySetGo.frontend.ui.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
