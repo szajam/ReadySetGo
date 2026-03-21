@@ -1,7 +1,7 @@
 **Summary**
 
-| Typ        | Issue          | Podsumowanie  | Testowanie |
-|------------|----------------|--------------------------|-|
-|||||
+| Typ        |Subtype    | Issue          | Podsumowanie  | Testowanie |
+|------------|------------|----------------|--------------------------|-|
+||||||
 
 **Testing**
