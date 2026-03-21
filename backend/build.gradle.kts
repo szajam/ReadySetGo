@@ -33,4 +33,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
     implementation("ch.qos.logback:logback-classic:1.4.14")
     implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
+
+    // JWT
+    implementation("com.auth0:java-jwt:4.4.0")
+
+    // BCrypt
+    implementation("org.mindrot:jbcrypt:0.4")
+
+    // Ktor auth
+    implementation("io.ktor:ktor-server-auth:2.3.12")
+    implementation("io.ktor:ktor-server-auth-jwt:2.3.12")
 }
