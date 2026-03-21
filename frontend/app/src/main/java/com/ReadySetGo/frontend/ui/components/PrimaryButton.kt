@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun PrimaryButton(
-    text: String,
+    tooltip: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true
