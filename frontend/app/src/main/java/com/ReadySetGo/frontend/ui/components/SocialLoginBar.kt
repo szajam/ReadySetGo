@@ -63,7 +63,7 @@ fun SocialLoginBar(
 }
 
 /**
- * Wewnętrzny, reużywalny komponent dla pojedynczej ikony w kółku.
+ * @param Wewnętrzny, reużywalny komponent dla pojedynczej ikony w kółku.
  */
 @Composable
 private fun SocialIconButton(
