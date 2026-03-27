@@ -64,6 +64,9 @@ fun SocialLoginBar(
 
 /**
  * Wewnętrzny, reużywalny komponent dla pojedynczej ikony w kółku.
+ * @param iconResId icon id z res
+ * @param contentDescription opis ikony
+ * @param onClick akcja kliknięcia ikony
  */
 @Composable
 private fun SocialIconButton(
