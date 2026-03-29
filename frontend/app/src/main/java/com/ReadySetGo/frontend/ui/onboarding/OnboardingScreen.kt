@@ -1,23 +1,15 @@
 package com.ReadySetGo.frontend.ui.onboarding
 
-
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 
+/**
+ * Ekran On Board'ingu — punkt wejścia dla nawigacji.
+ * Łączy nawigację z widokiem [OnboardingView].
+ *
+ * @param onNavigateToSignIn Callback wywoływany po kliknięciu przycisku "Get Started",
+ * przekierowuje do ekranu logowania.
+ */
 @Composable
-fun OnboardingScreen(
-    onNavigateToSignIn: () -> Unit
-) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "STUB: Onboarding Screen\n(Zdjęcie biegaczy + Get Started)")
-
-        // TODO: Dodać PrimaryButton, który wywołuje onNavigateToSignIn()
-    }
+fun OnboardingScreen(onNavigateToSignIn: () -> Unit) {
+    OnboardingView(onGetStarted = onNavigateToSignIn)
 }
