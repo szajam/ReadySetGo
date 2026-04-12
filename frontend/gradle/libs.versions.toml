@@ -21,6 +21,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
 androidx-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
+compose-snapper = { module = "dev.chrisbanes.snapper:snapper", version = "0.3.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

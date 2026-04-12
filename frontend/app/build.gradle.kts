@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.runtime)
 
     // Jetpack Compose - Zarządzanie wersjami przez BOM (Bill of Materials)
     val composeBom = platform("androidx.compose:compose-bom:2024.02.01")
@@ -66,6 +67,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.runtime:runtime")
+
+    implementation(libs.compose.snapper)
 
     // Narzędzia do podglądu (Preview)
     debugImplementation("androidx.compose.ui:ui-tooling")

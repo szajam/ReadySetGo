@@ -10,6 +10,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.*
 
+/**
+ * Główny szablon (Scaffold) dla ekranów procesu rejestracji i onboardingu.
+ * Komponent zapewnia spójny układ wizualny dla wszystkich kroków,
+ * automatycznie centrując nagłówek, opis oraz dynamiczną treść.
+ *
+ * @param title Nagłówek ekranu.
+ * @param description Opis ekranu.
+ * @param onContinueClick Akcja wykonywana po naciśnięciu przycisku "Continue".
+ * @param content Treść ekranu.
+ */
 @Composable
 fun OnboardingScaffold(
     title: String,
@@ -20,38 +30,58 @@ fun OnboardingScaffold(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp),
+            .padding(horizontal = 24.dp)
+            .padding(top = 40.dp, bottom = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(40.dp))
+
+        /**
+         * Sekcja nagłówka: Tytuł o pogrubionej czcionce 30.sp.
+         */
         Text(
             text = title,
-            style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
+            style = MaterialTheme.typography.headlineLarge.copy(
+                fontWeight = FontWeight.Bold,
+                fontSize = 30.sp
+            ),
             textAlign = TextAlign.Center
-        )
-        Text(
-            text = description,
-            style = MaterialTheme.typography.bodyMedium,
-            color = Color.Gray,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 8.dp, bottom = 32.dp)
         )
 
         /**
-         * Tu selektory!!
+         * Sekcja opisu: Tekst pomocniczy w kolorze szarym (Gray).
          */
+        Text(
+            text = description,
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 16.sp),
+            color = Color.Gray,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(top = 12.dp, bottom = 24.dp)
+        )
 
+        /**
+         * Kontener na treść ekranu.
+         * Użycie [Modifier.weight(1f)] sprawia, że ta sekcja "wypycha" nagłówek do góry
+         * i przyciski do dołu, centrując zawartość pionowo dzięki [Arrangement.Center].
+         */
         Column(
             modifier = Modifier.weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            content = content
+            content = content,
+            verticalArrangement = Arrangement.Center
         )
 
-//        PrimaryButton(
-//            text = "Continue",
-//            onClick = onContinueClick,
-//            modifier = Modifier.padding(bottom = 16.dp)
-//        )
+        /**
+         * TU PRZYCISK!!
+         *
+         */
+
+        // TODO: Dodać PrimaryButton, który wywołuje onContinueClick()
+        /*
+        PrimaryButton(
+            text = "Continue",
+            onClick = onContinueClick,
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+        )
+        */
     }
 }
