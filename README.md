@@ -98,15 +98,15 @@ Małe studia fitness i trenerzy tracą czas na ręczne odpisywanie na wiadomośc
 
 ## Styl dla PR'ów
 
-| Typ        | Issue          | Podsumowanie      |
-|------------|----------------|-------------------|
-| **Prefix** | *Issue z Jiry* | *Krótki opis*     |
+| Typ        | Subtype           | Issue          | Podsumowanie      |
+|------------|-------------------|----------------|-------------------|
+| **Prefix** | **Prefix**,**Prefix** | *Issue z Jiry* | *Krótki opis*     |
 
 **Przykład:**
 
-| Typ      | Issue     | Podsumowanie                             |
-|----------|-----------|------------------------------------------|
-| **Docs** | **RSG-6** | Zmiana dokumentacji, dodano nowy wygląd. |
+| Typ      | Subtype | Issue     | Podsumowanie                             |
+|----------|---------|-----------|------------------------------------------|
+| **Docs** |         | **RSG-6** | Zmiana dokumentacji, dodano nowy wygląd. |
 
 ---
 
@@ -197,18 +197,19 @@ Otwórz oba IDEs obok siebie — IntelliJ dla `backend/`, Android Studio dla `fr
 
 ### Technologie
 
-| Warstwa      | Technologia                         |
-|--------------|-------------------------------------|
-| Backend      | **Ktor 2.x (Netty)**                |
-| DB Bridge    | **JDBC** + **HikariCP**             |
-| Database     | **PostgreSQL 16 (Docker)**          |
-| Android UI   | **Fragments** + **ViewBinding**     |
-| Architecture | **MVVM** + **Repository pattern**   |
-| DI           | **Hilt**                            |
-| HTTP Client  | **Retrofit 2** + **OkHttp**         |
-| Async        | **Coroutines** + **StateFlow**      |
-| Repository   | **GitHub**                          |
-| Workflow     | **Jira**                            |
+| Warstwa       | Technologia                       |
+|---------------|-----------------------------------|
+| Backend       | **Ktor 2.x (Netty)**              |
+| DB Bridge     | **JDBC** + **HikariCP**           |
+| Database      | **PostgreSQL 16 (Docker)**        |
+| Android UI    | **Fragments** + **ViewBinding**   |
+| Architecture  | **MVVM** + **Repository pattern** |
+| DI            | **Hilt**                          |
+| HTTP Client   | **Retrofit 2** + **OkHttp**       |
+| Async         | **Coroutines** + **StateFlow**    |
+| Repository    | **GitHub**                        |
+| Workflow      | **Jira**                          |
+| DB Encryption | **JWT** + **BCrypt**              |
 
 ---
 
@@ -274,14 +275,18 @@ W `.env.example` zawarte są wszystkie wymagane zmienne środowiskowe.
 
 **Nigdy nie dodawaj do commit'a `.env`!**
 
-| Zmienna     | Domyślna wartość | Opis                   |
-|-------------|------------------|------------------------|
-| DB_HOST     | localhost        | PostgreSQL host        |
-| DB_PORT     | 5432             | PostgreSQL port        |
-| DB_NAME     | db_name          | Nazwa bazy danych      |
-| DB_USER     | db_user          | Użytkownik bazy danych |
-| DB_PASSWORD | db_password      | Hasło bazy danych      |
-| KTOR_PORT   | 8080             | Backend server port    |
+| Zmienna            | Domyślna wartość | Opis                   |
+|--------------------|------------------|------------------------|
+| DB_HOST            | localhost        | PostgreSQL host        |
+| DB_PORT            | 5432             | PostgreSQL port        |
+| DB_NAME            | db_name          | Nazwa bazy danych      |
+| DB_USER            | db_user          | Użytkownik bazy danych |
+| DB_PASSWORD        | db_password      | Hasło bazy danych      |
+| KTOR_PORT          | 8080             | Backend server port    |
+| JWT_SECRET         | abcd1234         | Sekret JWT             |
+| JWT_ISSUER         | rsg_issuer       | Nazwa issuer'a JWT     |
+| JWT_AUDIENCE       | rsg_users        | Nazwa audiencji JWT    |
+| JWT_EXPIRATION_MS  | 86400000         | Czas wygaśnięcia JWT   |
 
 ---
 
@@ -300,10 +305,11 @@ One automatycznie ustawiają ścieżkę do pliku `.env`.
 
 ## API
 
-| Metoda | Endpoint  | Opis                     |
-|--------|-----------|--------------------------|
-| GET    | /health   | Server + database status |
-
+| Metoda | Endpoint       | Opis                     |
+|--------|----------------|--------------------------|
+| GET    | /health        | Server + database status |
+| POST   | /auth/register | Rejestracja użytkownika  |
+| POST   | /auth/login    | Logowanie użytkownika    |
 
 Więcej endpoint'ów się pojawi w ciagu projektu.
 
