@@ -1,5 +1,8 @@
 package com.ReadySetGo.backend
 
+import com.ReadySetGo.backend.controller.authRoutes
+import com.ReadySetGo.backend.repository.UserRepository
+import com.ReadySetGo.backend.service.UserService
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.github.cdimascio.dotenv.dotenv
@@ -13,7 +16,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.module() {
 
-    // ── Load .env from root ReadySetGo/ folder ──────────────────
+    // ── Load .env ────────────────────────────────────────────────
     val dotenv = dotenv {
         directory = "../"
         ignoreIfMissing = false
@@ -35,6 +38,16 @@ fun Application.module() {
 
     log.info("Database pool initialized → ${dataSource.jdbcUrl}")
 
+    // ── Services ─────────────────────────────────────────────────
+    val userRepository = UserRepository(dataSource)
+    val userService = UserService(
+        userRepository   = userRepository,
+        jwtSecret        = dotenv["JWT_SECRET"],
+        jwtIssuer        = dotenv["JWT_ISSUER"],
+        jwtAudience      = dotenv["JWT_AUDIENCE"],
+        jwtExpirationMs  = dotenv["JWT_EXPIRATION_MS"].toLong()
+    )
+
     // ── Routes ───────────────────────────────────────────────────
     routing {
         get("/health") {
@@ -50,5 +63,7 @@ fun Application.module() {
                 )
             )
         }
+
+        authRoutes(userService)
     }
 }

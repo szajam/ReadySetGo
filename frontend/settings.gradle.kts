@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "ReadySetGo"
 include(":app")
- 
