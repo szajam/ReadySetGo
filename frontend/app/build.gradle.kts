@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.runtime)
 
     // Compose
     implementation(platform(libs.androidx.compose.bom))
@@ -71,6 +72,11 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    implementation(libs.compose.snapper)
+
+    // Narzędzia do podglądu (Preview)
+    debugImplementation("androidx.compose.ui:ui-tooling")
 
     // DataStore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
