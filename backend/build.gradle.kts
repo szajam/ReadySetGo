@@ -20,6 +20,13 @@ tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJ
     }
 }
 
+tasks.register<JavaExec>("seed") {
+    group = "application"
+    description = "Seeds the database with test data"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.ReadySetGo.backend.SeederKt")
+}
+
 dependencies {
     implementation("io.ktor:ktor-server-core:2.3.12")
     implementation("io.ktor:ktor-server-netty:2.3.12")

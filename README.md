@@ -129,6 +129,7 @@ ReadySetGo/
 ├── backend/          # Ktor REST API + JDBC + PostgreSQL
 │   ├── docker/       # Docker Compose + database setup
 │   │   ├── docker-compose.yml  # PostgreSQL 16 container
+│   │   ├── seed.ps1            # Seed database
 │   │   ├── start-db.ps1        # Start database
 │   │   └── stop-db.ps1         # Stop database       
 │   ├── src/
@@ -247,6 +248,12 @@ cd backend/docker
 .\stop-db.ps1
 ```
 
+#### Dla dodania podstawowych danych do bazy danych:
+```powershell
+cd backend/docker
+.\seed.ps1
+```
+
 ### 4. Wystartuj backend
 ```powershell
 cd backend
@@ -296,11 +303,11 @@ Baza danych jest zarządzana poprzez Docker Compose.
 Używaj podanych skryptów zamiast surowych komend `docker compose`.
 One automatycznie ustawiają ścieżkę do pliku `.env`.
 
-| Skrypt                        | Działanie                      |
-|-------------------------------|--------------------------------|
-| `backend/docker/start-db.ps1` | Wystartuj kontener PostgreSQL  |
-| `backend/docker/stop-db.ps1`  | Zatrzymaj kontener PostgreSQL  |
-
+| Skrypt                        | Działanie                           |
+|-------------------------------|-------------------------------------|
+| `backend/docker/start-db.ps1` | Wystartuj kontener PostgreSQL       |
+| `backend/docker/stop-db.ps1`  | Zatrzymaj kontener PostgreSQL       |
+| `backend/docker/seed.ps1`     | Seeduje testowe dane do bazy danych |
 ---
 
 ## API
