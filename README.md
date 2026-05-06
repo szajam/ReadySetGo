@@ -154,6 +154,7 @@ ReadySetGo/
 │   │       │   │   ├── repository/   # Repository pattern (bridge VM ↔ API)
 │   │       │   │   └── model/        # DTOs / UI models
 │   │       │   ├── ui/           # (Przykłady UI)
+│   │       │   │   ├── theme/        # Theme.kt (kolory, typografia)
 │   │       │   │   ├── home/         # HomeFragment + HomeViewModel
 │   │       │   │   └── detail/       # DetailFragment + DetailViewModel
 │   │       │   ├── di/               # Hilt modules
