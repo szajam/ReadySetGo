@@ -1,9 +1,9 @@
 # ReadySetGo
 Aplikacja - System Rezerwacji Usług Sportowych
 
-> *TBD*
+> System stworzony dla małych studiów fitness i trenerów, automatyzujący proces rezerwacji i zarządzania grafikiem.
 
-*TBD*
+ReadySetGo pozwala klientom na szybką rezerwację treningów, a administratorom oferuje przejrzysty panel do zarządzania wizytami. Aplikacja rozwiązuje problem błędów w zapisach, oszczędzając czas trenerom i ułatwiając dostęp użytkownikom.
 
 **Odznaki**:
 
