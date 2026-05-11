@@ -154,7 +154,7 @@ ReadySetGo/
 │   │       │   │   ├── repository/   # Repository pattern (bridge VM ↔ API)
 │   │       │   │   └── model/        # DTOs / UI models
 │   │       │   ├── ui/           # (Przykłady UI)
-│   │       │   │   ├── theme/        # Theme.kt (kolory, typografia)
+│   │       │   │   ├── theme/        # Theme.kt (kolory)
 │   │       │   │   ├── home/         # HomeFragment + HomeViewModel
 │   │       │   │   └── detail/       # DetailFragment + DetailViewModel
 │   │       │   ├── di/               # Hilt modules
@@ -325,9 +325,13 @@ Więcej endpoint'ów się pojawi w ciagu projektu.
 
 ## Paleta kolorów
 
-| Token | Kolor | Zastosowanie |
-|-------|-------|--------------|
-| *TBD* | *TBD* | *TBD*        |
-
+| Token          | Kolor (Hex)       | Zastosowanie                               |
+|----------------|-------------------|--------------------------------------------|
+| `DarkNavy`     | #192126           | Główny kolor aplikacji (Primary), teksty   |
+| `LimeGreen`    | #BBF246           | Główne akcenty, przyciski (Secondary)      |
+| `Orange`       | #F97316           | Dodatkowe wyróżnienia (Tertiary)           |
+| `Sand`/`Brown` | #C1A188 / #544026 | Kolory uzupełniające marki                 |
+| `ErrorRed`     | #E53935           | Komunikaty o błędach i ostrzeżenia         |
+| `InputGray`    | #F0F0F0           | Tła pól tekstowych (Surface)               |
 
 ---
