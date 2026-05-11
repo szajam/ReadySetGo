@@ -19,7 +19,7 @@ fun Application.module() {
     // ── Load .env ────────────────────────────────────────────────
     val dotenv = dotenv {
         directory = "../"
-        ignoreIfMissing = false
+        ignoreIfMissing = true
     }
 
     // ── Plugins ──────────────────────────────────────────────────
