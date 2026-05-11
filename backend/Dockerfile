@@ -9,4 +9,4 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=build /app/build/libs/backend.jar backend.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "backend.jar"]
+ENTRYPOINT ["sh", "-c", "java -DPORT=${PORT:-8080} -jar backend.jar"]
